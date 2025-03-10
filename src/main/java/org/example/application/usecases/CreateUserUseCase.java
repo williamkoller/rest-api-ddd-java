@@ -20,6 +20,7 @@ public class CreateUserUseCase {
         }
 
         User user = new User(username, email, age);
+        userRepository.save(user);
         eventDispatcher.dispatch(new UserCreatedEvent(user));
 
         return user;

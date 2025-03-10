@@ -17,7 +17,7 @@ public class Server {
         InMemoryUserRepository userRepository = new InMemoryUserRepository();
         EventDispatcher<UserCreatedEvent> eventDispatcher = new EventDispatcher<>();
 
-        eventDispatcher.subscribe(event -> System.out.println("Event: USer created with e-mail" + event.getUser().getEmail()));
+        eventDispatcher.subscribe(event -> System.out.println("Event: User created with e-mail" + event.getUser().getEmail()));
 
         CreateUserUseCase createUserUseCase = new CreateUserUseCase(userRepository, eventDispatcher);
         server.createContext("/users", new UserHandler(createUserUseCase));
